@@ -1,0 +1,27 @@
+{
+    "remove": {
+        "user": {
+            "name": "Peter Parker",
+            "email": "peter@stark.com",
+            "password": "pwd123"
+        },
+        "task": {
+            "name": "Construir o lança teias",
+            "tags": [
+                "ark",
+                "nonotech",
+                "teais"
+            ]
+        }
+    },
+    "not_found": {
+        "user": {
+            "name": "Bruce Wayne",
+            "email": "bruce@stark.com",
+            "password": "pwd123"
+        },
+        "task": {
+            "name": "Construir máquina"
+        }
+    }
+}
