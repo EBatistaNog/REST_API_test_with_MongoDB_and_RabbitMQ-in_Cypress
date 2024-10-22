@@ -8,13 +8,12 @@
         "task": {
             "name": "Pagar fatura",
             "tags": [
-                "nubank   ",
+                "nubank",
                 "ourocard",
                 "smiles"
             ]
         }
     },
-    
     "dup": {
         "user": {
             "name": "Jean Grey",
@@ -23,7 +22,6 @@
         },
         "task": {
             "name": "Fazer compras no mercado"
-           
         }
     }
 }

@@ -1,12 +1,13 @@
-
 Cypress.Commands.add('postUser', (user) => {
     cy.api({
         url: '/users',
         method: 'POST',
         body: user,
-        failOnStatusCode: false  //I added this variable because it was considering 2xx and 3xx status code.When to set false, it considers the others status codes
-    }).then(response => { return response })
-})
+        failOnStatusCode: false // Configura para não falhar em status diferentes de 2xx ou 3xx
+    }).then(response => {
+        return response; // Retorna a resposta da requisição
+    });
+});
 
 Cypress.Commands.add('postSession', (user) => {
     cy.api({
@@ -14,8 +15,10 @@ Cypress.Commands.add('postSession', (user) => {
         method: 'POST',
         body: { email: user.email, password: user.password },
         failOnStatusCode: false
-    }).then(response => { return response })
-})
+    }).then(response => {
+        return response; // Retorna a resposta da requisição
+    });
+});
 
 Cypress.Commands.add('postTask', (task, token) => {
     cy.api({
@@ -23,12 +26,14 @@ Cypress.Commands.add('postTask', (task, token) => {
         method: 'POST',
         body: task,
         headers: {
-            authorization: token
+            authorization: token // Inclui o token de autenticação no cabeçalho
         },
         failOnStatusCode: false
-    }).then(response => { return response }
-    )
-})
+    }).then(response => {
+        return response; // Retorna a resposta da requisição
+    });
+});
+
 Cypress.Commands.add('getUniqueTask', (taskId, token) => {
     cy.api({
         url: '/tasks/' + taskId,
@@ -37,8 +42,11 @@ Cypress.Commands.add('getUniqueTask', (taskId, token) => {
             authorization: token
         },
         failOnStatusCode: false
-    }).then(response => { return response })
-})
+    }).then(response => {
+        return response; // Retorna a resposta da requisição
+    });
+});
+
 Cypress.Commands.add('deleteTask', (taskId, token) => {
     cy.api({
         url: '/tasks/' + taskId,
@@ -47,8 +55,11 @@ Cypress.Commands.add('deleteTask', (taskId, token) => {
             authorization: token
         },
         failOnStatusCode: false
-    }).then(response => { return response })
-})
+    }).then(response => {
+        return response; // Retorna a resposta da requisição
+    });
+});
+
 Cypress.Commands.add('getTasks', (token) => {
     cy.api({
         url: '/tasks',
@@ -57,8 +68,11 @@ Cypress.Commands.add('getTasks', (token) => {
             authorization: token
         },
         failOnStatusCode: false
-    }).then(response => { return response })
-})
+    }).then(response => {
+        return response; // Retorna a resposta da requisição
+    });
+});
+
 Cypress.Commands.add('putTaskDone', (taskId, token) => {
     cy.api({
         url: `/tasks/${taskId}/done`,
@@ -67,5 +81,7 @@ Cypress.Commands.add('putTaskDone', (taskId, token) => {
             authorization: token
         },
         failOnStatusCode: false
-    }).then(response => { return response })
-})
+    }).then(response => {
+        return response; // Retorna a resposta da requisição
+    });
+});

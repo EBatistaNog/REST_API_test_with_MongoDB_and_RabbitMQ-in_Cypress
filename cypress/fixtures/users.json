@@ -22,9 +22,9 @@
         "email": "james@hotmail.com",
         "password": "pwd123"
     },
-    "required":{
+    "required": {
         "name": "Margot Robbie",
         "email": "margot@gmail.com",
-        "password":"pwd123"
+        "password": "pwd123"
     }
 }

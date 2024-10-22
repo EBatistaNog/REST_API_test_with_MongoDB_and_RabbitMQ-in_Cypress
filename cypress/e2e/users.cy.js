@@ -1,84 +1,79 @@
-//Test POST request on the /users route
+// Teste de requisição POST na rota /users
 describe('POST /users', () => {
 
   beforeEach(function () {
-    cy.fixture('users').then(function (users) {
-      this.users = users
-    })
-  })
-  it('register a new user', function () {
+    cy.fixture('users').then(function (users) { // Carrega os dados do arquivo de fixtures antes de cada teste
+      this.users = users; // Armazena os dados de usuários para uso nos testes
+    });
+  });
 
-    const user = this.users.create
+  it('registrar um novo usuário', function () {
+    const user = this.users.create; // Obtém o usuário do arquivo de fixtures
 
-    //Task with MongoDB:Go to the database and remove the user, as we will have fixed test data
-    cy.task('removeUser', user.email)
-
-    cy.postUser(user)
-      .then(response => {
-        expect(response.status).to.eq(201)
-      })
-  })
-
-  it('duplicate email', function () {
-
-    const user = this.users.dup_email
-
-    //Task with MongoDB:Go to the database and remove the user, as we will have fixed test data
-    cy.task('removeUser', user.email)
-
-    cy.postUser(user)
+    // Task com MongoDB: Vai ao banco de dados e remove o usuário
+    cy.task('removeUser', user.email);
 
     cy.postUser(user)
       .then(response => {
+        expect(response.status).to.eq(201); // Verifica se o status de resposta é 201 (Criado)
+      });
+  });
 
-        const { message } = response.body
-        expect(response.status).to.eq(409)
-        expect(message).to.eq('Duplicated email!')
-      })
+  it('email duplicado', function () {
+    const user = this.users.dup_email;
 
+    // Task com MongoDB: Vai ao banco de dados e remove o usuário
+    cy.task('removeUser', user.email);
 
-  })
+    cy.postUser(user); // Cria o usuário
 
-  context('required fields', function () {
+    cy.postUser(user) // Tenta criar o usuário novamente
+      .then(response => {
+        const { message } = response.body; // Desestrutura o objeto da resposta
+
+        expect(response.status).to.eq(409); // Verifica se o status é 409 (Conflito)
+        expect(message).to.eq('Duplicated email!'); // Verifica a mensagem de erro
+      });
+  });
+
+  context('campos obrigatórios', function () {
     let user;
 
     beforeEach(function () {
-      user = this.users.required
-    })
+      user = this.users.required; // Define o usuário do arquivo de fixtures para testes de campos obrigatórios
+    });
 
-
-    it('name is required', function () {
-      delete user.name
-
-      cy.postUser(user)
-        .then(response => {
-          const { message } = response.body
-          expect(response.status).to.eq(400)
-          expect(message).to.eq('ValidationError: \"name\" is required')
-        })
-    })
-
-    it('email is required', function () {
-      delete user.email
+    it('nome é obrigatório', function () {
+      delete user.name; // Remove o campo 'name' do objeto
 
       cy.postUser(user)
         .then(response => {
-          const { message } = response.body
-          expect(response.status).to.eq(400)
-          expect(message).to.eq('ValidationError: \"email\" is required')
-        })
-    })
+          const { message } = response.body; // Desestrutura a mensagem da resposta
+          expect(response.status).to.eq(400); // Verifica se o status é 400 (Erro de validação)
+          expect(message).to.eq('ValidationError: "name" is required'); // Verifica a mensagem de erro
+        });
+    });
 
-    it('password is required', function () {
-      delete user.password
+    it('email é obrigatório', function () {
+      delete user.email; // Remove o campo 'email' do objeto
 
       cy.postUser(user)
         .then(response => {
-          const { message } = response.body
-          expect(response.status).to.eq(400)
-          expect(message).to.eq('ValidationError: \"password\" is required')
-        })
-    })
-  })
-})
+          const { message } = response.body; // Desestrutura a mensagem da resposta
+          expect(response.status).to.eq(400); // Verifica se o status é 400 (Erro de validação)
+          expect(message).to.eq('ValidationError: "email" is required'); // Verifica a mensagem de erro
+        });
+    });
 
+    it('senha é obrigatória', function () {
+      delete user.password; // Remove o campo 'password' do objeto
+
+      cy.postUser(user)
+        .then(response => {
+          const { message } = response.body; // Desestrutura a mensagem da resposta
+          expect(response.status).to.eq(400); // Verifica se o status é 400 (Erro de validação)
+          expect(message).to.eq('ValidationError: "password" is required'); // Verifica a mensagem de erro
+        });
+    });
+  });
+});
