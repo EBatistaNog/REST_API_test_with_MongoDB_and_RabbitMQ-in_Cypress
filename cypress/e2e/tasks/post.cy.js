@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 
 describe('POST /tasks', () => {
-    let token;
+    
 
     beforeEach(function () {
         cy.fixture('tasks/post').then(function (tasks) {
@@ -9,7 +9,7 @@ describe('POST /tasks', () => {
         });
     });
 
-    it.only('register a new task', function () {
+    it('register a new task', function () {
         const { user, task } = this.tasks.create;
         cy.task('removeUser', user.email);
         cy.postUser(user);
