@@ -11,7 +11,6 @@ Este projeto demonstra como construir um framework de testes de API usando Cypre
 - Testar requisições HTTP (POST, GET, PUT, DELETE).
 - Trabalhar com **fixtures** para requests e responses.
 - Adicionar tokens em requisições.
-- Interceptar e validar dados em filas de mensageria.
 
 ## Project Structure
 - **API**: Gerencia tarefas e notifica mudanças.
