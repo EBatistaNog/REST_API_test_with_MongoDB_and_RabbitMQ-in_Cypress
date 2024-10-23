@@ -14,13 +14,14 @@ describe('GET /tasks', () => {
 
         cy.postSession(user)
             .then(respUser => {
-                tasks.forEach(function (t) {
+                tasks.forEach(function (t) {   //Temos uma lista de tarefa
                     cy.postTask(t, respUser.body.token);
                 });
 
                 cy.getTasks(respUser.body.token)
                     .then(response => {
                         expect(response.status).to.eq(200);
+                        console.log(response)
                     })
                     .its('body')
                     .should('be.an', 'array')
@@ -29,7 +30,7 @@ describe('GET /tasks', () => {
     });
 });
 
-describe('GET /tasks/:id', () => {
+describe('GET /tasks/:id', () => { // tem outro describe pois tem outra rota
 
     beforeEach(function () {
         cy.fixture('tasks/get').then(function (tasks) {

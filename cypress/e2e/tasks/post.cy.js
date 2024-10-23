@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 
 describe('POST /tasks', () => {
-    
+
 
     beforeEach(function () {
         cy.fixture('tasks/post').then(function (tasks) {
@@ -11,15 +11,17 @@ describe('POST /tasks', () => {
 
     it('register a new task', function () {
         const { user, task } = this.tasks.create;
+     
         cy.task('removeUser', user.email);
         cy.postUser(user);
 
         cy.postSession(user)
             .then(userResp => {
                 cy.task('removeTask', task.name, user.email);
-
+                
                 cy.postTask(task, userResp.body.token)
                     .then(response => {
+                      
                         expect(response.status).to.eq(201);
                         expect(response.body.name).to.eq(task.name);
                         expect(response.body.tags).to.eql(task.tags);

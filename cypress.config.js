@@ -28,7 +28,7 @@ module.exports = defineConfig({
           await tasks.deleteMany({ name: taskName, user: user._id }); // Remove as tasks associadas ao usuário
           return null;
         },
-        // Remove todas as tasks que contenham o termo especificado
+        // Remove todas as tasks que contenham o termo especificado, pois você tem uma lista
         async removeTasksLike(key) {
           const tasks = db.collection('tasks'); // Acessa a coleção 'tasks'
           await tasks.deleteMany({ name: { $regex: key } }); // Remove as tasks que contêm a chave no nome
