@@ -14,10 +14,10 @@ Este projeto demonstra como construir um framework de testes de API usando Cypre
 - Interceptação e validação de dados na fila de mensageria 
 
 ## Project Structure
-- **API**: Gerencia tarefas e notifica mudanças.
-- **RabbitMQ**: Recebe notificações das tarefas.
-- **Jaiminho**: Serviço que dispara e-mails a partir das mensagens no RabbitMQ.
-- **Ethereal**: Simula o envio e visualização de e-mails.
+- **API**: Envia notificações de mudança para o RabbitMQ.
+- **RabbitMQ**: Armazena e gerencia essas notificações em suas filas.
+- **Jaiminho**: Consome as mensagens e dispara os e-mails de notificação.
+- **Ethereal**: Simula o envio, permitindo a verificação das mensagens de e-mail enviadas.
 
 ## Banco de Dados
 - Instale o pacote MongoDB: `npm i mongodb`.
