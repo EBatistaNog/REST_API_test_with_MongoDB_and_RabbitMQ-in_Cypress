@@ -4,13 +4,14 @@
 Este projeto demonstra como construir um framework de testes de API usando Cypress, com integração de banco de dados, filas de mensageria e autenticação.
 
 ## Skills Aprendidas
-- Criar testes de API com Cypress.
-- Utilizar **Custom Commands** para camada de serviços.
-- Implementar **tasks do Cypress** para conexão com bancos de dados.
-- Consumir APIs de forma hardcore (sem Swagger).
-- Testar requisições HTTP (POST, GET, PUT, DELETE).
-- Trabalhar com **fixtures** para requests e responses.
-- Adicionar tokens em requisições.
+- Criar testes de API com Cypress. (Done)
+- Utilizar **Custom Commands** para camada de serviços. (Done)
+- Implementar **tasks do Cypress** para conexão com bancos de dados. (Done)
+- Consumir APIs de forma hardcore (sem Swagger). (Done)
+- Testar requisições HTTP (POST, GET, PUT, DELETE). (Done)
+- Trabalhar com **fixtures** para requests e responses. (Done)
+- Adicionar tokens em requisições. (Done)
+- Interceptação e validação de dados na fila de mensageria 
 
 ## Project Structure
 - **API**: Gerencia tarefas e notifica mudanças.
