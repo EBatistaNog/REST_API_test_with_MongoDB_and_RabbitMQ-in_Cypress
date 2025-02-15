@@ -1,27 +1,27 @@
 # Cypress API Testing Project
 
 ## Overview
-Este projeto demonstra como construir um framework de testes de API usando Cypress, com integração de banco de dados, filas de mensageria e autenticação.
+This project demonstrates how to build an API testing framework using Cypress, with database integration, messaging queues, and authentication.
 
-## Skills Aprendidas
-- Criar testes de API com Cypress. (Done)
-- Utilizar **Custom Commands** para camada de serviços. (Done)
-- Implementar **tasks do Cypress** para conexão com bancos de dados. (Done)
-- Consumir APIs de forma hardcore (sem Swagger). (Done)
-- Testar requisições HTTP (POST, GET, PUT, DELETE). (Done)
-- Trabalhar com **fixtures** para requests e responses. (Done)
-- Adicionar tokens em requisições. (Done)
-- Interceptação e validação de dados na fila de mensageria 
+## Skills Learned
+- Creating API tests with Cypress. (Done)
+- Using **Custom Commands** for the service layer. (Done)
+- Implementing **Cypress tasks** for database connections. (Done)
+- Consuming APIs in a hardcore way (without Swagger). (Done)
+- Testing HTTP requests (POST, GET, PUT, DELETE). (Done)
+- Working with **fixtures** for requests and responses. (Done)
+- Adding tokens to requests. (Done)
+- Intercepting and validating data in the messaging queue.
 
 ## Project Structure
-- **API**: Envia notificações de mudança para o RabbitMQ.
-- **RabbitMQ**: Armazena e gerencia essas notificações em suas filas.
-- **Jaiminho**: Consome as mensagens e dispara os e-mails de notificação.
-- **Ethereal**: Simula o envio, permitindo a verificação das mensagens de e-mail enviadas.
+- **API**: Sends change notifications to RabbitMQ.
+- **RabbitMQ**: Stores and manages these notifications in its queues.
+- **Jaiminho**: Consumes the messages and triggers notification emails.
+- **Ethereal**: Simulates email sending, allowing the verification of sent emails.
 
-## Banco de Dados
-- Instale o pacote MongoDB: `npm i mongodb`.
-- Arquivo `mongo.js` criado na pasta de suporte para conexão ao banco.
+## Database
+- Install the MongoDB package: `npm i mongodb`.
+- The file `mongo.js` was created in the support folder for database connections.
 
-## Mostrar Resultados das Requisições
-- Instale o plugin: `npm i cypress-plugin-api`.
+## Displaying Request Results
+- Install the plugin: `npm i cypress-plugin-api`.
